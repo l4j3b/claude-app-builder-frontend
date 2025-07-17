@@ -4,7 +4,11 @@ import { useState, useEffect, useRef } from "react";
 
 const GITPOD_URL = process.env.NEXT_PUBLIC_BASE_GITPOD_URL;
 const DEV_SERVER_URL = `https://${process.env.NEXT_PUBLIC_DEV_SERVER_PORT}-${GITPOD_URL}`;
-const CODE_API_URL = `https://${process.env.NEXT_PUBLIC_CLAUDE_URL}-${GITPOD_URL}`;
+const CODE_API_URL = `https://${process.env.NEXT_PUBLIC_CODE_API_PORT}-${GITPOD_URL}`;
+
+console.log("GITPOD_URL", GITPOD_URL);
+console.log("DEV_SERVER_URL", DEV_SERVER_URL);
+console.log("CODE_API_URL", CODE_API_URL);
 
 export default function Home() {
   const [prompt, setPrompt] = useState("Change the app main title to something funny");
