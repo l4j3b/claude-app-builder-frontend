@@ -11,7 +11,9 @@ console.log("DEV_SERVER_URL", DEV_SERVER_URL);
 console.log("CODE_API_URL", CODE_API_URL);
 
 export default function Home() {
-  const [prompt, setPrompt] = useState("Change the app main title to something funny");
+  const [prompt, setPrompt] = useState(
+    "Change the app main title (not the page title) to something funny and that looks nice."
+  );
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
   const [styledMessages, setStyledMessages] = useState(true);
