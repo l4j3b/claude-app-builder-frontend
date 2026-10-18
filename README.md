@@ -1,17 +1,18 @@
 # Claude App Builder: frontend
 
-> **Archived.** Built in July 2025 as a proof of concept and kept here as a record. It ran on Vercel. It is not maintained and no longer runs: the Vercel deployment and the backend it called are gone, and the model the backend requested has been retired.
+> [!WARNING]
+> ⚠️ **Archived proof of concept (July 2025).** Kept here as a record. It ran on Vercel. It is not maintained and no longer runs: the Vercel deployment and the backend it called are gone, and the model the backend requested has been retired.
 
-## Part of Claude App Builder
+The website of Claude App Builder, a Lovable-style tool that built web apps from a prompt. This was the user entry point. The user workspaces, where Claude Code edited and served each user's app, ran on [`claude-app-builder-backend`](https://github.com/l4j3b/claude-app-builder-backend).
 
-Claude App Builder was a Lovable-style prompt-to-app tool made of two repos that worked together:
+## How the two repos worked together
 
 | Repo | Role | Ran on |
 | --- | --- | --- |
-| `claude-app-builder-frontend` (this repo) | The builder UI: a chat panel that streams Claude's messages (text, tool calls with their commands and file paths, tool results, and the final turn count, duration and cost) next to an iframe with a live preview of the app being built | Vercel |
-| [`claude-app-builder-backend`](https://github.com/l4j3b/claude-app-builder-backend) | The Claude Code API (FastAPI around the Claude Code SDK) and the Next.js app that Claude edits | Gitpod, then Fly.io |
+| `claude-app-builder-frontend` (this repo) | The website and user entry point. Users describe the app they want in a chat panel that streams Claude's work (text, tool calls with their commands and file paths, tool results, and the final turn count, duration and cost), next to a live preview of their app | Vercel |
+| [`claude-app-builder-backend`](https://github.com/l4j3b/claude-app-builder-backend) | The user workspaces. A workspace runs the Claude Code API (FastAPI around the Claude Code SDK) and the user's Next.js app, which Claude edits | Gitpod, then Fly.io |
 
-A prompt typed here goes to the backend's streaming endpoint. Claude Code edits the backend's Next.js app, and the preview iframe, pointed at that app's dev server, shows the change. This repo's code calls the Gitpod version of the backend ([first commit](https://github.com/l4j3b/claude-app-builder-backend/tree/2797d56331d8b45b3c6417faafdcfbdf4d204063)) at `POST /claude/stream`.
+A user types a prompt on the website. The frontend sends it to the workspace's streaming endpoint, Claude Code edits the user's app in that workspace, and the website's preview iframe, pointed at the workspace's dev server, shows the change. This repo's code calls the Gitpod version of the backend ([first commit](https://github.com/l4j3b/claude-app-builder-backend/tree/2797d56331d8b45b3c6417faafdcfbdf4d204063)) at `POST /claude/stream`.
 
 ## Original notes
 
