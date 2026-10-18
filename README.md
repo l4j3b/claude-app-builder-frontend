@@ -1,5 +1,9 @@
 # Claude POC
 
+> **Archived.** Built in July 2025 as a proof of concept and kept here as a record. It is not maintained and does not run as-is today: the Gitpod workspace it pointed at is gone and the model the API requested has been retired.
+>
+> This is the UI half. A chat panel on the left sends prompts to the Claude Code API in [`claude-poc`](https://github.com/l4j3b/claude-poc) (`POST /claude/stream`) and renders the streamed messages: text, tool calls with their commands and file paths, tool results, and the final turn count, duration and cost. An iframe on the right shows the Next.js dev server that Claude is editing. [`loveable-hack-backend`](https://github.com/l4j3b/loveable-hack-backend) later moved the API to Fly.io.
+
 This is a POC for using Claude code to generate code.
 
 Basically a quick POC of a loveable.ai like app...
