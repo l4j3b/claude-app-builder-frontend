@@ -1,8 +1,19 @@
 # Claude App Builder: frontend
 
-> **Archived.** Built in July 2025 as a proof of concept and kept here as a record. It is not maintained and does not run as-is today: the Gitpod workspace it pointed at is gone and the model the API requested has been retired.
->
-> This is the UI half. A chat panel on the left sends prompts to the Claude Code API from [`claude-app-builder-backend`](https://github.com/l4j3b/claude-app-builder-backend), in its [first, Gitpod-based version](https://github.com/l4j3b/claude-app-builder-backend/tree/2797d56331d8b45b3c6417faafdcfbdf4d204063) (`POST /claude/stream`). It renders the streamed messages: text, tool calls with their commands and file paths, tool results, and the final turn count, duration and cost. An iframe on the right shows the Next.js dev server that Claude is editing. The backend later moved to Fly.io and renamed the endpoint to `/code/stream`, so this UI matches only that first version.
+> **Archived.** Built in July 2025 as a proof of concept and kept here as a record. It ran on Vercel. It is not maintained and no longer runs: the Vercel deployment and the backend it called are gone, and the model the backend requested has been retired.
+
+## Part of Claude App Builder
+
+Claude App Builder was a Lovable-style prompt-to-app tool made of two repos that worked together:
+
+| Repo | Role | Ran on |
+| --- | --- | --- |
+| `claude-app-builder-frontend` (this repo) | The builder UI: a chat panel that streams Claude's messages (text, tool calls with their commands and file paths, tool results, and the final turn count, duration and cost) next to an iframe with a live preview of the app being built | Vercel |
+| [`claude-app-builder-backend`](https://github.com/l4j3b/claude-app-builder-backend) | The Claude Code API (FastAPI around the Claude Code SDK) and the Next.js app that Claude edits | Gitpod, then Fly.io |
+
+A prompt typed here goes to the backend's streaming endpoint. Claude Code edits the backend's Next.js app, and the preview iframe, pointed at that app's dev server, shows the change. This repo's code calls the Gitpod version of the backend ([first commit](https://github.com/l4j3b/claude-app-builder-backend/tree/2797d56331d8b45b3c6417faafdcfbdf4d204063)) at `POST /claude/stream`.
+
+## Original notes
 
 This is a POC for using Claude code to generate code.
 
